@@ -5,6 +5,15 @@ https://github.com/php-amqplib/php-amqplib
 #### Rust/amqp
 https://crates.io/crates/amqp
 
+### Results on recreated containers
+|   Messages    |  PHP amqplib  | Rust amqp     |
+| ------------- | ------------- | ------------- |
+|       1000    | 0.034713030s  | 0.077033535s  |
+|      10000    | 0.133811951s  | 0.140594426s  |
+|     100000    | 1.435546160s  | 0.989818645s  |
+|     500000    | 7.366487980s  | 5.902539790s  |
+|    1000000    | 14.444792032s | 12.267197595s |
+
 ### Setting up environment
 ###### Copy env file
 cp .env.dist .env
