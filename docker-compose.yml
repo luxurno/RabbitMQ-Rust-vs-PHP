@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        PROJECT_DIR: /var/www
+    command: php -S 0.0.0.0:8080 ./php/index.php
+    environment:
+      RABBIT_HOST: ${RABBIT_HOST}
+      RABBIT_PORT: ${RABBIT_PORT}
+      RABBIT_USER: ${RABBIT_USER}
+      RABBIT_PASS: ${RABBIT_PASS}
+      RABBIT_VHOST: ${RABBIT_VHOST}
+      MESSAGE: ${MESSAGE}
+      REPEAT_COUNT: ${REPEAT_COUNT}
+      USER: ${USER}
+
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - rabbit
+  rabbit:
+    image: rabbitmq:3.8.6-management-alpine
+    hostname: "rabbit"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "5672:5672"
+      - "15673:15672"
