@@ -1,7 +1,5 @@
 FROM php:7.4-cli
 
-RUN ls -l
-
 ARG PROJECT_DIR="/var/www"
 ENV PROJECT_DIR=${PROJECT_DIR}
 
