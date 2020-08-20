@@ -23,6 +23,6 @@ class Timer
 
         $endTime = sprintf('%.6f', $micro * 1000);
 
-        echo $endTime . "ms\n";
+        echo $sec . $endTime . "ms\n";
     }
 }
